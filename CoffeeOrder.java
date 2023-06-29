@@ -1,3 +1,7 @@
+/**
+ * Constructs a new CoffeeOrder, calculates total of the order
+ * and prints receipt of all items and final cost.
+ */
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -7,12 +11,18 @@ import java.util.Scanner;
 public class CoffeeOrder {
     private List<Coffee> coffees;
     private LocalDateTime orderDate;
-
+    /**
+     * Constructs a new CoffeeOrder with the current date and time as the order date.
+     */
     public CoffeeOrder() {
         coffees = new ArrayList<Coffee>();
         orderDate = LocalDateTime.now();
     }
-
+    /**
+     * Constructs a new CoffeeOrder with the specified order date.
+     *
+     * @param orderDate (the order date)
+     */
     public CoffeeOrder(LocalDateTime orderDate) {
         coffees = new ArrayList<Coffee>();
         this.orderDate = orderDate;
@@ -25,7 +35,11 @@ public class CoffeeOrder {
     public List<Coffee> getCoffees() { return coffees; }
 
     public LocalDateTime getOrderDate() { return orderDate; }
-
+    /**
+     * Calculates the total cost of the order, taking into account the potential discount.
+     *
+     * @return the total cost of the order
+     */
     public double getTotal() {
         double total = 0;
         for (Coffee coffee : coffees) {
@@ -50,7 +64,11 @@ public class CoffeeOrder {
         }
         return total;
     }
-
+    /**
+     * Generates a string of the order receipt of coffees.
+     *
+     * @return the full order receipt as a string
+     */
     public String printOrder() {
         StringBuilder order = new StringBuilder("ORDER RECEIPT\n");
         order.append(String.format("Timestamp: %s%n", orderDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mma"))));

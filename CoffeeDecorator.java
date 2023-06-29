@@ -1,3 +1,7 @@
+/**
+ * The CoffeeDecorator class is an abstract class that implements the
+ * Coffee interface and serves as a base class for coffee decorators.
+ */
 import java.util.List;
 
 public abstract class CoffeeDecorator implements Coffee {
