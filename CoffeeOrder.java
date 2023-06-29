@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class CoffeeOrder {
     private List<Coffee> coffees;
     private LocalDateTime orderDate;
+    private static final String[] DISCOUNT_CODE = {"DISCOUNTCODE", "CREATORCODE", "SEASONAL10"};
     /**
      * Constructs a new CoffeeOrder with the current date and time as the order date.
      */
@@ -52,16 +53,22 @@ public class CoffeeOrder {
 
             Scanner input = new Scanner(System.in);
             String discountCode = input.nextLine();
+            boolean isDiscountApplied = false;
+            for (String code : DISCOUNT_CODE) {
+                if (discountCode.equals(code)) {
+                    total = total * 0.9;
+                    isDiscountApplied = true;
+                    break;
+                }
 
-            if (discountCode.equals("DISCOUNTCODE")) {
-                total = total * 0.9;
+
             }
-                else if (discountCode.equals("N")) {
-                System.out.println("No discount Applied ");
-            } else {
+            if (!isDiscountApplied && !discountCode.equals("N")) {
                 System.out.println("Invalid discount code.");
+
             }
         }
+
         return total;
     }
     /**
